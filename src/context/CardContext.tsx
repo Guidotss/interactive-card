@@ -3,12 +3,14 @@ import { createContext } from 'react';
 interface CardContextProps {
     cardNumber: string;
     cardName: string;
-    expDate: string;
+    expMonth: string;
+    expYear: string;
     cvv: string;
 
     setCardNumber: (cardNumber: string) => void;
     setCardName: (cardName: string) => void;
-    setExpDate: (expDate: string) => void;
+    setExpMonth: (expMonth: string) => void;
+    setExpYear: (expYear: string) => void;
     setCvv: (cvv: string) => void;
 }
 
