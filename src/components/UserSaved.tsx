@@ -11,7 +11,7 @@ export const UserSaved: FC<UserSavedProps> = ({ continueController }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center w-full mr-5 sm:mr:0">
       <div className="mb-5">
         <CheckIcon />
       </div>
@@ -22,7 +22,7 @@ export const UserSaved: FC<UserSavedProps> = ({ continueController }) => {
         We’ve added your card detail s
       </p>
       <button
-        className="bg-deep_violet px-5 py-3 rounded-md mt-5 w-[350px] text-slate-50 font-semibold"
+        className="bg-deep_violet px-5 py-3 rounded-md mt-5 w-[300px] sm:w-[350px] text-slate-50 font-semibold"
         onClick={handleContinue}
       >
         Continue
