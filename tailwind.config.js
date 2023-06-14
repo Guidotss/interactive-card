@@ -14,7 +14,7 @@ module.exports = {
       },
       colors: {
         deep_violet: '#21092F',
-      }
+      },
     },
   },
   plugins: [],

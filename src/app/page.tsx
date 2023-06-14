@@ -1,7 +1,8 @@
 'use client'
-import { CardBack, CardFront, NewCardForm } from "@/components";
+import { CardBack, CardFront, NewCardForm, UserSaved } from "@/components";
 import Image from "next/image";
 import { useState } from "react";
+import 'animate.css'
 
 export default function Home() {
 
@@ -27,7 +28,9 @@ export default function Home() {
       <div className="flex-1">
         {
           wasSubmitted ? (
-            <h1>hola</h1>
+            <div className="animate__animated animate__fadeInDown">
+              <UserSaved continueController={setWasSubmitted} />
+            </div>
           )
           :(
             <NewCardForm submitController={setWasSubmitted} />
