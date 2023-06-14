@@ -27,6 +27,8 @@ export const CardProvider: FC<CardProviderProps> = ({ children }) => {
     const [ state, dispatch ] = useReducer(cardReducer, CARD_INITIAL_STATE); 
 
     const setCardNumber = (cardNumber: string) => {
+        if(cardNumber.length > 16) return;
+        if(isNaN(Number(cardNumber))) return;
         dispatch({ type: '[Card] - SET_CARD_NUMBER', payload: cardNumber });
     }
 
