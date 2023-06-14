@@ -1,6 +1,6 @@
 "use client";
 import { CardContext } from "@/context";
-import { useContext } from "react";
+import { FC, useContext } from "react";
 import { useForm } from "react-hook-form";
 
 interface IFormInput {
@@ -11,7 +11,11 @@ interface IFormInput {
   cvv: string;
 }
 
-export const NewCardForm = () => {
+interface Props { 
+  submitController: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export const NewCardForm:FC<Props> = ({ submitController }) => {
   const {
     cardName,
     cardNumber,
@@ -32,7 +36,9 @@ export const NewCardForm = () => {
   } = useForm<IFormInput>();
 
   const onSubmit = (data: IFormInput) => {
-    console.log(data);
+    if(!errors.cardName && !errors.cardNumber && !errors.expMonth && !errors.expYear && !errors.cvv) { 
+      submitController(true)
+    }
   };
 
   return (
@@ -107,13 +113,11 @@ export const NewCardForm = () => {
               className="border border-gray-300 rounded-md p-2 px-4 m-2 w-[200px] font-semibold text-deep_violet"
               placeholder="e.g. 123"
               value={cvv}
-              {
-                ...register("cvv", {
-                  required: true,
-                  minLength: 3,
-                  maxLength: 3,
-                })
-              }
+              {...register("cvv", {
+                required: true,
+                minLength: 3,
+                maxLength: 3,
+              })}
               onChange={(e) => setCvv(e.target.value)}
             />
             {errors.cvv && (

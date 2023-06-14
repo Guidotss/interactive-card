@@ -1,7 +1,12 @@
+'use client'
 import { CardBack, CardFront, NewCardForm } from "@/components";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
+
+  const [ wasSubmitted, setWasSubmitted ] = useState(false)
+
   return (
     <main className="flex items-center bg-slate-100">
       <div>
@@ -20,7 +25,14 @@ export default function Home() {
         <CardBack />
       </div>
       <div className="flex-1">
-        <NewCardForm />
+        {
+          wasSubmitted ? (
+            <h1>hola</h1>
+          )
+          :(
+            <NewCardForm submitController={setWasSubmitted} />
+          )
+        }
       </div>
     </main>
   );
